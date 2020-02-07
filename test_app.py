@@ -2,7 +2,7 @@ from flask import Flask, escape, request, jsonify
 import sqlite3
 from flask import g
 
-DATABASE = '/home/heather_e_gaya/INFO_8000_Flaskapp/birdinfo.db'
+DATABASE = 'birdinfo.db'
 
 app = Flask(__name__)
 @app.route('/grabdata/', methods = ['GET'])
