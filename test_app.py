@@ -11,3 +11,9 @@ def get_db():
     if db is None:
         db = g._database = sqlite3.connect(DATABASE)
     return jsonify(db)
+
+@app.route('/')
+def hello():
+    name = request.args.get("name", "World")
+    response = {"name":name}
+    return jsonify(response)
