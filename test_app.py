@@ -2,6 +2,8 @@ from flask import Flask, escape, request, jsonify
 import sqlite3
 from flask import g
 
+app = Flask(__name__)
+
 DATABASE = '/home/heather_e_gaya/INFO_8000_Flaskapp/birdinfo.db'
 
 def connect_db():
@@ -21,8 +23,6 @@ def query_db(query, args=(), one=False):
     rv = [dict((cur.description[idx][0], value)
                for idx, value in enumerate(row)) for row in cur.fetchall()]
     return (rv[0] if rv else None) if one else rv
-
-app = Flask(__name__)
 
 @app.route('/')
 def hello():
