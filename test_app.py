@@ -14,7 +14,11 @@ def hello():
 
 
 
-#@app.route('/testconnect/')
-#def get_db():
-#  db = g._database = sqlite3.connect(DATABASE)
-#    return jsonify({"I connected"})
+@app.route('/testconnect/')
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        database_file = current_app.config['DATABASE']
+        db = g._database = sqlite3.connect(database_file)
+        db.row_factory = sqlite3.Row
+    return db 
