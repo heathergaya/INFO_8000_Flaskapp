@@ -15,12 +15,7 @@ def hello():
 
 
 @app.route('/testconnect/')
-def get_db():
-    db = getattr(g, '_database', None)
-     name = request.args.get("name", "World")
-    response = {"name":name + " Hello"}
-    if db is None:
-        database_file = current_app.config['DATABASE']
-        db = g._database = sqlite3.connect(database_file)
-        db.row_factory = sqlite3.Row
+def hello2():
+    name = request.args.get("name", "World")
+    response = {"name":name + " I am angry that this isn't working"}
     return jsonify(response)
