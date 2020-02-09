@@ -10,7 +10,7 @@ Four routes are possible
 Route '/':
 Takes you to the home page. Nothing much here. 
 
-  Example: http://34.69.66.156/ returns a page with some text
+    Example: http://34.69.66.156/ returns a page with some text
   
 
 Route '/testy':
