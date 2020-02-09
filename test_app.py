@@ -43,7 +43,7 @@ def tableview():
     data = query_db(myquery)
     return jsonify(data)
 
-@app.route('/addstuff', methods=['PUT'])
+@app.route('/addstuff', methods=['PUT', 'GET'])
 def addinfo():
     stuff = request.args.get("effort")
     added = g.db.execute(stuff)
