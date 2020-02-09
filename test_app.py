@@ -48,7 +48,7 @@ def addinfo():
     g.db.execute(stuff)
     g.db.commit()
     entered = jsonify(stuff)
-    return jsonify({entered+ "was added to database"})
+    return jsonify({"The data was entered. You typed": entered})
 
 @app.errorhandler(404)
 def page_not_found(e):
