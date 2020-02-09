@@ -1,4 +1,4 @@
-from flask import Flask, escape, request, jsonify
+from flask import Flask, escape, request, jsonify, make_response
 import sqlite3
 from flask import g
 
@@ -48,7 +48,8 @@ def addinfo():
     g.db.execute(stuff)
     g.db.commit()
     entered = jsonify(stuff)
-    return jsonify({"The data was entered. You typed": entered})
+    m = {"The data was entered. You typed"}
+   return '{} {}'.format(m, entered)
 
 @app.errorhandler(404)
 def page_not_found(e):
