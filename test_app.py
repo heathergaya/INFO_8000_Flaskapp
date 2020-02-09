@@ -1,8 +1,16 @@
 from flask import Flask, escape, request, jsonify, make_response
 import sqlite3
 from flask import g
+from flask_httpauth import HTTPBasicAuth
+
 
 app = Flask(__name__)
+
+auth = HTTPBasicAuth()
+
+USER_DATA = {
+    "admin": "yaybirds"
+}
 
 DATABASE = '/home/heather_e_gaya/INFO_8000_Flaskapp/birdinfo.db'
 
@@ -42,6 +50,14 @@ def tableview():
     data = query_db(myquery)
     return jsonify(data)
 
+#can't put without "login" 
+@auth.verify_password
+def verify(username, password):
+    if not (username and password):
+        return False
+    return USER_DATA.get(username) == password
+
+@auth.login_required
 @app.route('/addstuff', methods=['PUT', 'GET'])
 def addinfo():
     stuff = request.args.get("info")
