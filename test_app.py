@@ -26,7 +26,7 @@ def query_db(query, args=(), one=False):
 
 @app.route('/', methods=['GET'])
 def home():
-    return "<h1>This is the home page for a fake bird database </h1><p>Oh boy birds!</p></p>Typing /viewtable and a query after allows you to view database </p>"
+    return "<h1>This is the home page for a fake bird database </h1><p>Oh boy birds!</p></p>Typing /viewtable?myquery= allows you to view database </p></p>Typing /addstuff?info= after allows information entry into database </p>"
 
 
 @app.route('/testy')
@@ -34,7 +34,6 @@ def hello():
     name = request.args.get("name", "World")
     response = {"name":name + " Hello"}
     return jsonify(response)
-
 
 
 @app.route('/viewtable', methods=['GET'])
