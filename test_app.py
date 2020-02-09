@@ -38,13 +38,13 @@ def hello():
 
 
 @app.route('/viewtable', methods=['GET'])
-def hello2():
+def tableview():
     myquery = request.args.get("myquery")
     data = query_db(myquery)
     return jsonify(data)
 
 @app.route('/addstuff', methods=['PUT'])
-def hello2():
+def addinfo():
     stuff = request.args.get("effort")
     added = g.db.execute(stuff)
     return jsonify("The info" + added + "was added to the database")
