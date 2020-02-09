@@ -32,8 +32,7 @@ def hello():
 
 
 
-@app.route('/testconnect/', methods=['GET'])
+@app.route('/viewtable/', methods=['GET'])
 def hello2():
-    myquery = request.args.get("myquery")
-    data = query_db(myquery)
+    data = query_db("SELECT * FROM ?")
     return jsonify(data)
