@@ -40,5 +40,5 @@ def hello():
 @app.route('/viewtable', methods=['GET'])
 def hello2():
     myquery = request.args.get("myquery")
-    #data = query_db(myquery)
-    return jsonify(myquery)
+    data = query_db(myquery)
+    return jsonify(data)
