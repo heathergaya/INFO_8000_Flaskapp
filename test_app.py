@@ -47,9 +47,8 @@ def addinfo():
     stuff = request.args.get("info")
     g.db.execute(stuff)
     g.db.commit()
-    entered = jsonify(stuff)
-    m = {"The data was entered"}
-    return '{} {}'.format(jsonify(stuff),m)
+    m = {"The data was entered. Check /viewtable?myquery= to see changes in database"}
+    return jsonify(m)
 
 @app.errorhandler(404)
 def page_not_found(e):
