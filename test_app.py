@@ -24,7 +24,12 @@ def query_db(query, args=(), one=False):
                for idx, value in enumerate(row)) for row in cur.fetchall()]
     return (rv[0] if rv else None) if one else rv
 
-@app.route('/')
+@app.route('/', methods=['GET'])
+def home():
+    return "<h1>This is the home page for a fake bird database </h1><p>Oh boy birds!</p>"
+
+
+@app.route('/testy')
 def hello():
     name = request.args.get("name", "World")
     response = {"name":name + " Hello"}
@@ -32,7 +37,8 @@ def hello():
 
 
 
-@app.route('/viewtable/', methods=['GET'])
+@app.route('/viewtable', methods=['GET'])
 def hello2():
-    data = query_db("SELECT * FROM ?")
+    myquery = request.args.get("myquery")
+    data = query_db(myquery)
     return jsonify(data)
