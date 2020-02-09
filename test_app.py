@@ -47,7 +47,7 @@ def tableview():
 def addinfo():
     stuff = request.args.get("info")
     added = g.db.execute(stuff)
-    return jsonify({"The information" + stuff + "was added to the database"})
+    return jsonify(stuff)
 
 @app.errorhandler(404)
 def page_not_found(e):
