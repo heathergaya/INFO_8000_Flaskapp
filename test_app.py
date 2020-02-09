@@ -46,7 +46,7 @@ def tableview():
 @app.route('/addstuff', methods=['PUT', 'GET'])
 def addinfo():
     stuff = request.args.get("info")
-    added = g.db.execute(stuff)
+    g.db.execute(stuff)
     return jsonify(stuff)
 
 @app.errorhandler(404)
