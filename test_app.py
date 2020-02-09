@@ -26,7 +26,7 @@ def query_db(query, args=(), one=False):
 
 @app.route('/', methods=['GET'])
 def home():
-    return "<h1>This is the home page for a fake bird database </h1><p>Oh boy birds!</p></p>Typing /testy after the web address gives you the practice page from class </p>"
+    return "<h1>This is the home page for a fake bird database </h1><p>Oh boy birds!</p></p>Typing /viewtable and a query after allows you to view database </p>"
 
 
 @app.route('/testy')
@@ -42,3 +42,7 @@ def hello2():
     myquery = request.args.get("myquery")
     data = query_db(myquery)
     return jsonify(data)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return "<h1>404</h1><p>The resource could not be found. Georgia's being weird recently, blame Kemp. </p>", 404
