@@ -47,6 +47,7 @@ def tableview():
 def addinfo():
     stuff = request.args.get("info")
     g.db.execute(stuff)
+    g.db.commit()
     return jsonify(stuff)
 
 @app.errorhandler(404)
