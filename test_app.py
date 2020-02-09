@@ -34,5 +34,6 @@ def hello():
 
 @app.route('/testconnect/', methods=['GET'])
 def hello2():
-    data = query_db("SELECT * FROM birds")
+    myquery = request.args.get("myquery")
+    data = query_db(myquery)
     return jsonify(data)
