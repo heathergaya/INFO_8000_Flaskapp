@@ -43,6 +43,12 @@ def hello2():
     data = query_db(myquery)
     return jsonify(data)
 
+@app.route('/addstuff', methods=['PUT'])
+def hello2():
+    stuff = request.args.get("effort")
+    added = g.db.execute(stuff)
+    return jsonify("The info" + added + "was added to the database")
+
 @app.errorhandler(404)
 def page_not_found(e):
-    return "<h1>404</h1><p>The resource could not be found. Georgia's being weird recently, blame Kemp. </p>", 404
+    return "<h1>404</h1><p>The resource could not be found. </p>", 404
