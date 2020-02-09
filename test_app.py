@@ -63,4 +63,4 @@ def addinfo():
     stuff = request.args.get("info")
     g.db.execute(stuff)
     g.db.commit()
-    return "<h1>The data was entered. Check /viewtable?myquery= to see changes in database </h1>"
+    return "<p>The data was entered. Check /viewtable?myquery= to see changes in database </p>"
